@@ -1,0 +1,159 @@
+/* App-specific styles */
+
+/* Ensure smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Full viewport slides */
+.slide {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Animation initial states */
+.animate-fade-in-up {
+  opacity: 0;
+}
+
+.animate-fade-in {
+  opacity: 0;
+}
+
+/* When animation completes, keep visible */
+.animate-fade-in-up,
+.animate-fade-in {
+  animation-fill-mode: forwards;
+}
+
+/* Navigation dots positioning */
+.nav-dots {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.nav-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(26, 35, 50, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 0;
+}
+
+.nav-dot:hover {
+  background-color: rgba(26, 35, 50, 0.5);
+  transform: scale(1.2);
+}
+
+.nav-dot.active {
+  background-color: #1a2332;
+  transform: scale(1.3);
+}
+
+/* Dark slide dot styles */
+.slide-dark ~ .nav-dots .nav-dot,
+.slide-dark + .nav-dots .nav-dot {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.slide-dark ~ .nav-dots .nav-dot:hover,
+.slide-dark + .nav-dots .nav-dot:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.slide-dark ~ .nav-dots .nav-dot.active,
+.slide-dark + .nav-dots .nav-dot.active {
+  background-color: white;
+}
+
+/* Image hover effects */
+.img-editorial {
+  transition: transform 0.5s ease;
+}
+
+.img-editorial:hover {
+  transform: scale(1.02);
+}
+
+/* Layer item hover */
+.layer-item {
+  cursor: default;
+}
+
+/* Comparison grid styling */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background-color: #1a2332;
+}
+
+.comparison-item {
+  background-color: #faf9f7;
+  padding: 3rem;
+}
+
+/* Three column responsive */
+.three-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* Editorial grid responsive */
+.editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .three-col {
+    grid-template-columns: 1fr;
+  }
+  
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .nav-dots {
+    display: none;
+  }
+  
+  .editorial-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .slide {
+    padding: 2rem 0;
+  }
+}
+
+/* Print styles */
+@media print {
+  .nav-dots {
+    display: none;
+  }
+  
+  .slide {
+    page-break-after: always;
+    min-height: auto;
+    height: 100vh;
+  }
+}
